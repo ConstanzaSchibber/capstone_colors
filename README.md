@@ -35,6 +35,13 @@ When it comes to the images, 40% correspond to lipsticks and 35% to blush. Moreo
 
 ## Human Annotation: Creating Data Labels
 
+In this project, the absence of labeled data necessitated a manual approach to data annotation. Specifically, I manually cropped each image to focus solely on the makeup area, such as isolating the lipstick in an image. This step was crucial to ensure the accuracy of the color analysis, as the cropped section was then analyzed to determine the average CIELAB color, which served as a close approximation to the 'ground truth' color (see [notebook 3](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Data_Annotation.ipynb)) 
+
+However, not all images could provide this ground truth value. Some images displayed only the container without showing the actual makeup color (e.g., lipstick). As a result, 88.8% of the images in the dataset had a corresponding ground truth value. The fact that not all images have a ground truth color is not a problem, though, because the absense of label is due to factors unrelated to the color itself, such as incomplete data (e.g., images showing packaging without the makeup color). Therefore, missing labels do not introduce any bias related to the color properties being studied.
+
+Finally, for the images with ground truth values, I extracted and stored the average CIELAB color in the metadata, which allowed for precise comparison and evaluation of the color predictions in the subsequent steps.
+
+
 ## Method 1: Color Segmentation
 
 I developed a method to identify and analyze CIELAB color shades in makeup images using image clustering techniques, with a focus on achieving accurate color matching (see [notebook 2](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_A_for_color_identification.ipynb). The goal was to create a robust framework for identifying and categorizing shades that align with human visual perception, crucial for makeup products where precise color matching is key.
@@ -50,6 +57,8 @@ Validation: Delta E ranges from 0 to 100, where  0 indicates that the colors are
 For illustration, the set of six figures displays makeup images (blush, lipstick, or lipgloss) from the validation set, each accompanied by a comparison of the predicted and true colors of the makeup. The Delta E values, which range from 0-5, 5-10, 10-15, and beyond, indicate the difference between the predicted and true colors. For lower Delta E values, the predicted color closely matches the true color, reflecting higher accuracy. As Delta E increases, the prediction accuracy decreases, often due to interference from packaging and shadows, which distort the true color and lead to less accurate predictions.
 
 ![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/deltaE.png)
+
+Overall, the refined model demonstrated strong generalization for most makeup products, with notable improvements in color matching accuracy. However, further refinement is suggested for lipliner to reduce variability and enhance precision.
 
 
 
