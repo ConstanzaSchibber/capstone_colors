@@ -47,10 +47,14 @@ Finally, for the images with ground truth values, I extracted and stored the ave
 I developed a method to identify and analyze CIELAB color shades in makeup images using image clustering techniques, with a focus on achieving accurate color matching (see [notebook 2](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_A_for_color_identification.ipynb). The goal was to create a robust framework for identifying and categorizing shades that align with human visual perception, crucial for makeup products where precise color matching is key.
 
 Key Steps:
-- Initial Exploration: I started by applying k-means clustering to a few test images, extracting dominant colors and determining the most frequent color in each cluster. This helped establish a foundation for scaling up the approach.
-- Scaling to the Entire Dataset: I expanded the method to the entire dataset by dividing the images into training, validation, and test sets. I validated the algorithm’s performance by calculating [Delta E (ΔE)](https://en.wikipedia.org/wiki/Color_difference), a metric that quantifies color difference, to compare the identified color with the 'ground truth'.
-- Algorithm Refinement: To improve accuracy, especially for lipstick and lipgloss where container colors were confounding results, I refined the algorithm by filtering out clusters with black and white colors. This adjustment led to a significant reduction in Delta E across the dataset, indicating improved color matching.
-- Validation and Testing: The final algorithm iteration showed considerable improvements, particularly in reducing Delta E for products like blush, lipgloss, and lipliner, indicating more reliable color identification. The model was then tested on unseen data to ensure it generalized well.
+
+1. Initial Exploration: I started by applying k-means clustering to a few test images, extracting dominant colors and determining the most frequent color in each cluster. This helped establish a foundation for scaling up the approach.
+
+2. Scaling to the Entire Dataset: I expanded the method to the entire dataset by dividing the images into training, validation, and test sets. I validated the algorithm’s performance by calculating [Delta E (ΔE)](https://en.wikipedia.org/wiki/Color_difference), a metric that quantifies color difference, to compare the identified color with the 'ground truth'.
+
+3. Algorithm Refinement: To improve accuracy, especially for lipstick and lipgloss where container colors were confounding results, I refined the algorithm by filtering out clusters with black and white colors. This adjustment led to a significant reduction in Delta E across the dataset, indicating improved color matching.
+
+4. Validation and Testing: The final algorithm iteration showed considerable improvements, particularly in reducing Delta E for products like blush, lipgloss, and lipliner, indicating more reliable color identification. The model was then tested on unseen data to ensure it generalized well.
 
 Validation: Delta E ranges from 0 to 100, where  0 indicates that the colors are identical, while values up to 10 suggest that the colors are similar. For color-matching applications, a threshold between 10 and 15 is generally effective. About 62% of the images from the test set had a Delta E below 15. None of the images had a Delta E above 45 and 95% had a Delta E below 30. On average, the Delta E for blush (10.5) and lipgloss (14.02) are lower than for lipliner (17.8) and lipstick (18.3).
 
@@ -59,6 +63,42 @@ For illustration, the set of six figures displays makeup images (blush, lipstick
 ![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/deltaE.png)
 
 Overall, the refined model demonstrated strong generalization for most makeup products, with notable improvements in color matching accuracy. However, further refinement is suggested for lipliner to reduce variability and enhance precision.
+
+Here's a brief, high-level report of your work:
+
+## Method 2: Improving Makeup Color Identification with Multimodal AI
+
+In this [section](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_B_for_color_identification_LLM_.ipynb), I explored the use of `Claude`, a multimodal large language model, to identify and analyze CIELAB color values of makeup products from images. The goal was to create a more accurate and nuanced color identification system than typically found in e-commerce platforms.
+
+Key Steps and Findings:
+
+1. Initial Implementation:
+   - Developed a system to process makeup product images and estimate CIELAB colors using Claude.
+   - Created a function to resize images and encode them for API compatibility.
+
+2. Prompt Engineering:
+   - Refined prompts over multiple rounds to improve color identification accuracy.
+   - Tailored prompts for specific makeup categories (lipstick, lipliner, blush, lipgloss).
+
+3. Evaluation:
+   - Used Delta E (ΔE) to measure the difference between predicted and ground truth colors.
+   - Initial results showed a mean ΔE of 15.76, with variations across product categories.
+
+4. Improvement:
+   - Enhanced prompts led to significant improvements:
+     - Mean Delta E decreased from 16.4 to 11.5 (30% improvement).
+     - Median Delta E decreased from 12.8 to 10.56 (17% improvement).
+   - Substantial improvements across all product categories, particularly for challenging items like lipstick and lipliner.
+
+5. Final Results:
+   - 70% of cases now have a Delta E below 20, and 50% below 15.
+   - Eliminated cases with very high ΔE (>40), indicating increased reliability.
+   - Net gain of 8% in cases with improved color accuracy.
+
+The refined approach using Claude and carefully engineered prompts significantly enhanced the accuracy and reliability of makeup color identification. This method shows promise for improving color matching in e-commerce and cosmetics applications, offering a more nuanced and precise color selection process for consumers.
+
+
+
 
 
 
