@@ -98,7 +98,25 @@ Key Steps and Findings:
 The refined approach using Claude and carefully engineered prompts significantly enhanced the accuracy and reliability of makeup color identification. This method shows promise for improving color matching in e-commerce and cosmetics applications, offering a more nuanced and precise color selection process for consumers.
 
 
+## Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification
 
+Next, I [compared the two methods](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Comparison_of_Approaches_A_and_B_.ipynb) for identifying CIELAB shades in makeup products. The comparison was based on Delta E values, which measure color difference. If for a specific makeup product the Delta E of method A is higher than for Method B (Method A > Method B), then Method B performs better because the color predicted is closer to the ground truth color. On the other hand, of for a specific makeup product the Delta E of method B is higher than for Method A, then Method A is performing better because of the small Delta E.
+
+Overall, the LLM method (Claude) generally outperformed the clustering method across all makeup categories. More specifically, for blush and lipgloss, the LLM approach showed slightly better performance, with about 58-60% of cases having better color accuracy. For lipliner, both methods performed similarly, with the LLM approach having a slight edge (44.83% vs 41.38%). Finally, for lipstick, the LLM significantly outperformed clustering, providing better color accuracy in 62.83% of cases compared to 28.27% for clustering. 
+
+Table: Delta E comparisons (% of products with higher Delta E)
+| Category | LLM > Clustering (%) | Clustering > LLM (%) |
+|----------|----------------------|----------------------|
+| blush    | 34.15                | 59.76                |
+| lipgloss | 36.89                | 57.38                |
+| lipliner | 41.38                | 44.83                |
+| lipstick | 28.27                | 62.83                |
+
+
+The LLM's superior performance, especially in the lipstick category, may be attributed to its ability to incorporate contextual information about makeup packaging in its analysis.
+The balanced performance in the lipliner category suggests that both methods have their strengths for certain types of products.
+
+In a nutshell, the multimodal LLM approach (Claude) demonstrated overall better performance in identifying CIELAB shades across various makeup categories, particularly excelling with lipsticks. This suggests that leveraging advanced AI models with contextual understanding can significantly improve color identification accuracy.
 
 
 
