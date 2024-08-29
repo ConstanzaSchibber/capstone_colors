@@ -81,8 +81,8 @@ Key Steps and Findings:
    - Tailored prompts for specific makeup categories (lipstick, lipliner, blush, lipgloss).
 
 3. Evaluation:
-   - Used Delta E (ΔE) to measure the difference between predicted and ground truth colors.
-   - Initial results showed a mean ΔE of 15.76, with variations across product categories.
+   - Used Delta E to measure the difference between predicted and ground truth colors.
+   - Initial results showed a mean Delta E  of 15.76, with variations across product categories.
 
 4. Improvement:
    - Enhanced prompts led to significant improvements:
@@ -92,7 +92,7 @@ Key Steps and Findings:
 
 5. Final Results:
    - 70% of cases now have a Delta E below 20, and 50% below 15.
-   - Eliminated cases with very high ΔE (>40), indicating increased reliability.
+   - Eliminated cases with very high Delta E (>40), indicating increased reliability.
    - Net gain of 8% in cases with improved color accuracy.
 
 The refined approach using Claude and carefully engineered prompts significantly enhanced the accuracy and reliability of makeup color identification. This method shows promise for improving color matching in e-commerce and cosmetics applications, offering a more nuanced and precise color selection process for consumers.
