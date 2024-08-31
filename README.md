@@ -7,6 +7,15 @@
 - App: web-user interface in which users can filter makeup by color
 - Tech stack: Python, Google Colab, React Streamlit
 
+Table of Contents
+- [Problem](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
+- [Data Collection, Data Cleaning, and Exploratory Data Analysis](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#data-collection-and-cleaning-and-exploratory-data-analysis)
+- [Human Annotation: Creating Data Labels](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#human-annotation-creating-data-labels)
+- [Method 1: Color Segmentation](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#method-1-color-segmentation)
+- [Method 2: Improving Makeup Color Identification with Multimodal AI](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#method-2-improving-makeup-color-identification-with-multimodal-ai)
+- [Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#comparative-analysis-of-clustering-and-multimodal-llm-approaches-for-makeup-color-identification)
+- [Building User-Friendly Streamlit App](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#building-user-friendly-streamlit-app)
+
 ## Problem
 
 I aim to identify the color of makeup from images to organize makeup by shade. Makeup products often have fanciful and inconsistent names, making it difficult for consumers to find the desired shade. These names can complicate organizing makeup by color. For example, the following makeup shades are all labeled as "mauve," even though they are clearly different shades. Some are not even mauve (as defined by Pantone) but brown.
@@ -25,7 +34,7 @@ CIELAB offers a standardized method for describing colors, enabling accurate col
 
 In sum, this approach would enable the creation of a more reliable and user-friendly system for consumers to search and compare makeup by shade.
 
-## Data Collection and Cleaning, and Exploratory Data Analysis
+## Data Collection, Data Cleaning, and Exploratory Data Analysis
 
 The inital data consists of tables with information on makeup products and links to the makeup images. Some key metadata consists of product category (e.g. blush, lipstick, etc.), brand, shade - fancy names from the brand like `sunset`, `peachy`, `raunchy`-, specific product name, among others. 
 
@@ -35,7 +44,7 @@ When it comes to the images, 40% correspond to lipsticks and 35% to blush. Moreo
 
 ## Human Annotation: Creating Data Labels
 
-In this project, the absence of labeled data necessitated a manual approach to data annotation. Specifically, I manually cropped each image to focus solely on the makeup area, such as isolating the lipstick in an image. This step was crucial to ensure the accuracy of the color analysis, as the cropped section was then analyzed to determine the average CIELAB color, which served as a close approximation to the 'ground truth' color (see [notebook 3](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Data_Annotation.ipynb)) 
+In this project, the absence of labeled data necessitated a manual approach to data annotation. Specifically, I manually cropped each image to focus solely on the makeup area, such as isolating the lipstick in an image. This step was crucial to ensure the accuracy of the color analysis, as the cropped section was then analyzed to determine the average CIELAB color, which served as a close approximation to the 'ground truth' color (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Data_Annotation.ipynb)) 
 
 However, not all images could provide this ground truth value. Some images displayed only the container without showing the actual makeup color (e.g., lipstick). As a result, 88.8% of the images in the dataset had a corresponding ground truth value. The fact that not all images have a ground truth color is not a problem, though, because the absense of label is due to factors unrelated to the color itself, such as incomplete data (e.g., images showing packaging without the makeup color). Therefore, missing labels do not introduce any bias related to the color properties being studied.
 
@@ -68,7 +77,7 @@ Here's a brief, high-level report of your work:
 
 ## Method 2: Improving Makeup Color Identification with Multimodal AI
 
-In this [section](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_B_for_color_identification_LLM_.ipynb), I explored the use of `Claude`, a multimodal large language model, to identify and analyze CIELAB color values of makeup products from images. The goal was to create a more accurate and nuanced color identification system than typically found in e-commerce platforms.
+In this [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_B_for_color_identification_LLM_.ipynb), I explored the use of `Claude`, a multimodal large language model, to identify and analyze CIELAB color values of makeup products from images. The goal was to create a more accurate and nuanced color identification system than typically found in e-commerce platforms.
 
 Key Steps and Findings:
 
@@ -97,7 +106,6 @@ Key Steps and Findings:
 
 The refined approach using Claude and carefully engineered prompts significantly enhanced the accuracy and reliability of makeup color identification. This method shows promise for improving color matching in e-commerce and cosmetics applications, offering a more nuanced and precise color selection process for consumers.
 
-
 ## Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification
 
 Next, I [compared the two methods](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Comparison_of_Approaches_A_and_B_.ipynb) for identifying CIELAB shades in makeup products. The comparison was based on Delta E values, which measure color difference. If for a specific makeup product the Delta E of method A is higher than for Method B (Method A > Method B), then Method B performs better because the color predicted is closer to the ground truth color. On the other hand, of for a specific makeup product the Delta E of method B is higher than for Method A, then Method A is performing better because of the small Delta E.
@@ -118,7 +126,34 @@ The balanced performance in the lipliner category suggests that both methods hav
 
 In a nutshell, the multimodal LLM approach (Claude) demonstrated overall better performance in identifying CIELAB shades across various makeup categories, particularly excelling with lipsticks. This suggests that leveraging advanced AI models with contextual understanding can significantly improve color identification accuracy.
 
+## Building User-Friendly Streamlit App
 
+In the final [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/6_Makeup_App_in_Streamlit.ipynb), I developed a makeup color search application using Streamlit. This app allows users to filter and find makeup products, offering a more nuanced and extensive color selection process compared to major retailers like Sephora and Ulta.
+
+In the world of makeup, finding the perfect shade can be a challenge. While many online retailers offer basic color filtering, this app takes it a step further by providing a more granular and visually intuitive color selection process.
+
+Key Features:
+- Color Filtering: Users can choose from over 10 color groups, significantly more than typical e-commerce platforms.
+- Multiple Filter Options: Products can be filtered by color, brand, and category (lipstick, blush, lipliner, lipgloss).
+- Visual Color Selection: Color swatches are provided for users to click and filter by color intuitively.
+- AI-Powered Color Prediction: The colors are predicted from product images using advanced methods (detailed previously).
+
+How It Works:
+- The app uses Streamlit to create an interactive web interface.
+- Color data is pre-processed and grouped by similarity.
+- Users interact with color swatches, brand selections, and product categories to filter results.
+- The filtered results are displayed in a dynamic, user-friendly table.
+
+### Streamlit - Setup and Styling:
+
+The app uses Streamlit's page configuration to set the layout and sidebar state. Custom CSS is applied to style the page, including the sidebar and table.
+
+- Data Loading and Preparation: The makeup data is loaded from a CSV file and relevant columns are selected.
+- Dynamic Filters: The `DynamicFilters` class is used to create filters for category and brand.
+- Color Swatch Selection: Color swatches are loaded and displayed as clickable images. When a color is clicked, it filters the dataset by that color.
+- Result Display: The filtered results are displayed in a table with product images.
+
+This app leverages Streamlit's interactive features and custom styling to create a user-friendly interface. The color prediction and grouping (done in separate processes) allow for a more refined color selection than typically found in e-commerce platforms.
 
 
 
