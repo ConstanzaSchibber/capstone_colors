@@ -1,13 +1,14 @@
 # Project: Identifying Makeup Color from Images
 
 **tl;dr:**
-- Goal: Identify the color of makeup on the CIELab color space in order to compare shades on a standardized scale rather than by creative names each brand decides. 
-- Data: Table of makeup products along with an image of each product collected from makeup retailers by scraping their website or using their API. 
-- Methods: (1) color segmentation, (2) Multimodal Large Language Model (Claude)
-- App: web-user interface in which users can filter makeup by color
-- Tech stack: Python, Google Colab, React Streamlit
 
-Table of Contents
+- **Goal:** Identify the color of makeup on the CIELab color space in order to compare shades on a standardized scale rather than by creative names each brand decides. 
+- **Data:** Table of makeup products along with an image of each product collected from makeup retailers by scraping their website or using their API. 
+- **Methods:** (1) color segmentation, (2) Multimodal Large Language Model (Claude)
+- **App:** web-user interface in which users can filter makeup by color
+- **Tech stack:** Python, Google Colab, React Streamlit
+
+*Table of Contents*
 - [Problem](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
 - [Data Collection, Data Cleaning, and Exploratory Data Analysis](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#data-collection-and-cleaning-and-exploratory-data-analysis)
 - [Human Annotation: Creating Data Labels](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#human-annotation-creating-data-labels)
