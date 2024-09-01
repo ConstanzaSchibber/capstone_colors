@@ -156,7 +156,15 @@ The app uses Streamlit's page configuration to set the layout and sidebar state.
 
 This app leverages Streamlit's interactive features and custom styling to create a user-friendly interface. The color prediction and grouping (done in separate processes) allow for a more refined color selection than typically found in e-commerce platforms.
 
+## Streamlit App
 
+Before selecting filters:
+
+![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/myapp.jpg)
+
+After filtering by a color shade:
+
+![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/appl_filter.jpg)
 
 
 
