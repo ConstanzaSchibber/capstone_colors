@@ -164,7 +164,7 @@ Before selecting filters:
 
 After filtering by a color shade:
 
-![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/appl_filter.jpg)
+![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/appl_filter.png)
 
 
 
