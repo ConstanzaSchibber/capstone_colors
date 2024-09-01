@@ -17,7 +17,7 @@
 - [Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#comparative-analysis-of-clustering-and-multimodal-llm-approaches-for-makeup-color-identification)
 - [Building User-Friendly Streamlit App](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#building-user-friendly-streamlit-app)
 
-## Problem
+## Problem and Solution
 
 I aim to identify the color of makeup from images to organize makeup by shade. Makeup products often have fanciful and inconsistent names, making it difficult for consumers to find the desired shade. These names can complicate organizing makeup by color. For example, the following makeup shades are all labeled as "mauve," even though they are clearly different shades. Some are not even mauve (as defined by Pantone) but brown.
 
