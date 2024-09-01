@@ -9,7 +9,7 @@
 - **Tech stack:** Python, Google Colab, React Streamlit
 
 *Table of Contents*
-- [Problem](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
+- [Problem & Solution](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
 - [Data Collection, Data Cleaning, and Exploratory Data Analysis](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#data-collection-and-cleaning-and-exploratory-data-analysis)
 - [Human Annotation: Creating Data Labels](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#human-annotation-creating-data-labels)
 - [Method 1: Color Segmentation](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#method-1-color-segmentation)
@@ -17,7 +17,7 @@
 - [Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#comparative-analysis-of-clustering-and-multimodal-llm-approaches-for-makeup-color-identification)
 - [Building User-Friendly Streamlit App](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#building-user-friendly-streamlit-app)
 
-## Problem and Solution
+## Problem & Solution
 
 I aim to identify the color of makeup from images to organize makeup by shade. Makeup products often have fanciful and inconsistent names, making it difficult for consumers to find the desired shade. These names can complicate organizing makeup by color. For example, the following makeup shades are all labeled as "mauve," even though they are clearly different shades. Some are not even mauve (as defined by Pantone) but brown.
 
