@@ -23,6 +23,11 @@ I aim to identify the color of makeup from images to organize makeup by shade. M
 
 ![image](https://github.com/ConstanzaSchibber/capstone_colors/blob/5be3cc59ebc4906092fa95ccbdc54b890ca8827e/img/Screen%20Shot%202024-08-24%20at%208.52.52%20PM.png)
 
+Moreover, the color shade filters offered by makeup retailers are often limited. For example, below are the lipstick color options available at Sephora and Ulta, compared to the more comprehensive shade palette my app provides which allows users to filter by a lot more shades: 
+
+![image](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/filters_retail.png)
+
+
 By leveraging the [CIELAB color space](https://en.wikipedia.org/wiki/CIELAB_color_space), which provides a standardized and perceptually uniform representation of color, I aim to identify makeup colors from images, and organize them and categorize them by shade. It's designed to be perceptually uniform, meaning that the numerical differences between colors correspond to perceived differences to the human eye.
 
 CIELAB is a color space defined by the International Commission on Illumination (CIE) where colors are represented in three dimensions: 
