@@ -79,7 +79,9 @@ Validation: Delta E ranges from 0 to 100, where  0 indicates that the colors are
 
 For illustration, the set of six figures displays makeup images (blush, lipstick, or lipgloss) from the validation set, each accompanied by a comparison of the predicted and true colors of the makeup. The Delta E values, which range from 0-5, 5-10, 10-15, and beyond, indicate the difference between the predicted and true colors. For lower Delta E values, the predicted color closely matches the true color, reflecting higher accuracy. As Delta E increases, the prediction accuracy decreases, often due to interference from packaging and shadows, which distort the true color and lead to less accurate predictions.
 
-![img](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/deltaE.png)
+<div align="center">
+<img src=https://github.com/ConstanzaSchibber/capstone_colors/blob/main/img/deltaE.png width=70% >
+</div>
 
 Overall, the refined model demonstrated strong generalization for most makeup products, with notable improvements in color matching accuracy. However, further refinement is suggested for lipliner to reduce variability and enhance precision.
 
