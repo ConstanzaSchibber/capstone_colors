@@ -6,7 +6,7 @@
 - **Data:** Table of makeup products along with an image of each product collected from makeup retailers by scraping their website or using their API. 
 - **Methods:** (1) color segmentation, (2) Multimodal Large Language Model (Claude)
 - **App:** web-user interface in which users can filter makeup by color
-- **Tech stack:** Python, Google Colab, React Streamlit
+- **Tech stack:** Python, Google Colab, Streamlit
 
 *Table of Contents*
 - [Problem & Solution](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
