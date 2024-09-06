@@ -1,4 +1,4 @@
-# Project: Identifying Makeup Color from Images
+# Project: Advancing Makeup Color Matching with ML and Multimodal LLM: From Color Identification in Images to User-Focused App
 
 **tl;dr:**
 
