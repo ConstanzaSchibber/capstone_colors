@@ -1,0 +1,46 @@
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets & credentials
+.env
+.env.*
+service_account.json
+credentials.json
+
+# Images (large, regenerable)
+data/img/
+
+# Generated intermediate CSVs (reproduced by running notebooks in order)
+data/processed/data_1.csv
+data/processed/data_2.csv
+data/processed/data_4_cluster_output.csv
+data/processed/data_5_cluster_output_v3.csv
+data/processed/metadata_ground_truth.csv
+data/processed/df_llm_2.csv
+
+# Personal notes
+experiments.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,25 @@
+# Core data & ML
+numpy
+pandas
+scipy
+scikit-learn
+scikit-image
+
+# Image processing
+Pillow
+opencv-python
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# API & web
+anthropic
+requests
+validators
+
+# Streamlit app
+streamlit
+streamlit-dynamic-filters
+st-clickable-images
