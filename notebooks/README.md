@@ -1,32 +1,70 @@
-This folder contains the following notebooks:
+# Notebooks
 
-1. [Data Engineering](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/1_DataEngineering.ipynb):
-   - Collection of images: download from the web, validate URLs, download Images, evaluate if all of the files downloaded are images
-   - Exploratory data analysis: explora metadata (e.g. product categories) and images (e.g. image size in pixeles, width/height, number of colors)
+This folder contains the notebooks for the project, organized in execution order.
 
-2. [Data Annotation](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Data_Annotation.ipynb): I manually crop each image to focus solely on the makeup area—for instance, isolating just the lipstick in an image. Then I,
-   - Read cropped images 
-   - Identify `ground truth` CIELab value
-   - Save the value as part of the Metadata
-  
-3. [Method A for Identifying CIELab Color: Clustering](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_A_for_color_identification.ipynb):
-   - Test Cases 1 & 2: I used test cases images to apply and improve a k-means algorithm to cluster images and then extract the mean CIELab color of each cluster. I wrote functions to allow for a number of image types (e.g. `.png`) to be read and analyzed, this was needed because different image types have different number of color channels.
-   - Scaling to other images: Reading the images, splitting into training/validation/test sets
-   - Round 1: Applying the algorithm and validating the results
-   - Round 2: Improving the algorithm based on the round 1 results, mainly enhancing the accuracy of the makeup color detection by identifying background color of the image (white or black), and removing it.
-   - Round 3: Improving the algorithing based on the round 2 results, focusing on improving handling of `.png` images and conversion to CIELab color scale.
-   - Assessing the final algorithm with the test set: The model shows strong generalization for blush and reasonable stability for lipgloss and lipstick, further refinement may be needed for lipliner to reduce variability and improve color accuracy.
+---
 
-4. [Method B for Identifying CIELab Color: Multimodal Large Language Model `Claude`](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_B_for_color_identification_LLM_.ipynb):
-   - Test of individual image
-   - Prompt Engineering
-   - Round 1: Scaling up and validation of results
-   - Round 2: Based on the results of round 1, I refine the prompt and new results show considerable improvement.
-   - Assessing the final algorithm with the test set: almost 70% of the cases have a Delta E below 20, and 50% have a Delta E below 15, indicating a substantial improvement in the model's precision. 
-  
-5. [Comparison of Methods A & B](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Comparison_of_Approaches_A_and_B_.ipynb): The analysis reveals that the LLM consistently outperformed the clustering technique, particularly for the lipstick category. Both methods showed improved accuracy with larger image sizes, likely due to the increased availability of color information and detail. 
+## Setup
 
-7. [Makeup App in Streamlit](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/6_Makeup_App_in_Streamlit.ipynb):  I development a makeup color search application using Streamlit. This app allows users to filter and find makeup products, offering a more nuanced and extensive color selection process compared to major retailers like Sephora and Ulta.
-   - Makeup predicted color is grouped in multiple color categories using a clustering algorithm so that filtering makeup by similar shade was user-friendly (see second half of this [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Comparison_of_Approaches_A_and_B_.ipynb))
-   - Create color swatches so that users can pick colors by seeing the color, rather than reading the color name.
-   - Streamlit and python code for the app
+**1. Install dependencies:**
+```
+pip install -r requirements.txt
+```
+
+**2. Set up your API key** (required for notebook 4 only):
+
+Create a `.env` file in the project root:
+```
+ANTHROPIC_API_KEY=your_actual_key_here
+```
+
+**3. Add data files:**
+
+Place the following in `data/processed/` before running notebooks 3–6:
+- `products_with_images.csv` (output of notebook 1)
+- `ground_truth_labels.csv` (output of notebook 2)
+- `products_clustered_v2.csv`, `products_clustered_final.csv` (outputs of notebook 3)
+- `products_llm_final.csv` (output of notebook 4)
+
+Images should be placed in `data/img/original/`.
+
+---
+
+## Notebooks
+
+**1. [Data Engineering](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/1_DataEngineering.ipynb)**
+- Validate URLs and download product images from makeup retailers
+- Check that all downloaded files are valid, uncorrupted images
+- Exploratory data analysis: product categories, image size, resolution, color distributions
+
+**2. [Data Annotation](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_DataAnnotation.ipynb)**
+- Manually crop each image to isolate the makeup area (e.g. just the lipstick tip)
+- Extract the average CIELAB color from each cropped image as the ground truth label
+- Store ground truth values in metadata for use in model evaluation
+
+**3. [Method A: Color Segmentation with Clustering](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Model_A_Clustering.ipynb)**
+- Apply k-means clustering to extract dominant colors from makeup images
+- Round 1: baseline algorithm on training set, validated with Delta E
+- Round 2: refine by filtering out near-black and near-white clusters (background/packaging)
+- Round 3: improve handling of PNG images and CIELAB conversion
+- Final evaluation on test set: strong results for blush and lipgloss; lipliner needs further refinement
+
+**4. [Method B: Color Identification with Multimodal LLM](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Model_B_LLM.ipynb)**
+- Use Claude (multimodal LLM) to identify CIELAB colors directly from product images
+- Round 1: baseline prompt, scaled to full dataset
+- Round 2: refined category-specific prompts — mean Delta E improved from 16.4 to 11.5 (30% improvement)
+- Final evaluation: 70% of cases have Delta E below 20, 50% below 15
+
+> **Requires an Anthropic API key.** See setup instructions above.
+
+**5. [Comparison of Methods A & B](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/5_Comparison.ipynb)**
+- Compare Delta E results across both methods for each product category
+- LLM outperforms clustering overall, particularly for lipstick (62.83% of cases)
+- Includes visualization of color predictions vs. ground truth
+
+**6. [Streamlit App](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/6_StreamlitApp.ipynb)**
+- Generate color swatches for the UI
+- Streamlit app code for filtering makeup by color, brand, and category
+- Deployment instructions
+
+> **Just want to run the app?** A self-contained version is available at [github.com/ConstanzaSchibber/makeup-filter](https://github.com/ConstanzaSchibber/makeup-filter).

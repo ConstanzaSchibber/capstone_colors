@@ -27,12 +27,12 @@ credentials.json
 data/img/
 
 # Generated intermediate CSVs (reproduced by running notebooks in order)
-data/processed/data_1.csv
-data/processed/data_2.csv
-data/processed/data_4_cluster_output.csv
-data/processed/data_5_cluster_output_v3.csv
-data/processed/metadata_ground_truth.csv
-data/processed/df_llm_2.csv
+data/processed/products_with_images.csv
+data/processed/products_clustered_v1.csv
+data/processed/products_clustered_v2.csv
+data/processed/products_clustered_final.csv
+data/processed/ground_truth_labels.csv
+data/processed/products_llm_final.csv
 
 # Personal notes
 experiments.txt
