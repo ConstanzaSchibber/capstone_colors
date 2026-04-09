@@ -11,11 +11,11 @@
 *Table of Contents*
 - [Problem & Solution](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
 - [Data Collection, Data Cleaning, and Exploratory Data Analysis](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#data-collection-and-cleaning-and-exploratory-data-analysis)
-- [Human Annotation: Creating Data Labels](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#human-annotation-creating-data-labels)
-- [Method 1: Color Segmentation](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#method-1-color-segmentation)
-- [Method 2: Improving Makeup Color Identification with Multimodal AI](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#method-2-improving-makeup-color-identification-with-multimodal-ai)
-- [Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#comparative-analysis-of-clustering-and-multimodal-llm-approaches-for-makeup-color-identification)
-- [Building User-Friendly Streamlit App](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#building-user-friendly-streamlit-app)
+- [Human Annotation: Creating Data Labels](#human-annotation-creating-data-labels)
+- [Method 1: Color Segmentation](#method-1-color-segmentation)
+- [Method 2: Improving Makeup Color Identification with Multimodal AI](#method-2-improving-makeup-color-identification-with-multimodal-ai)
+- [Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification](#comparative-analysis-of-clustering-and-multimodal-llm-approaches-for-makeup-color-identification)
+- [Building User-Friendly Streamlit App](#building-user-friendly-streamlit-app)
 
 ## Problem & Solution
 
@@ -54,7 +54,7 @@ When it comes to the images, 40% correspond to lipsticks and 35% to blush. Moreo
 
 ## Human Annotation: Creating Data Labels
 
-In this project, the absence of labeled data necessitated a manual approach to data annotation. Specifically, I manually cropped each image to focus solely on the makeup area, such as isolating the lipstick in an image. This step was crucial to ensure the accuracy of the color analysis, as the cropped section was then analyzed to determine the average CIELAB color, which served as a close approximation to the 'ground truth' color (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Data_Annotation.ipynb)) 
+In this project, the absence of labeled data necessitated a manual approach to data annotation. Specifically, I manually cropped each image to focus solely on the makeup area, such as isolating the lipstick in an image. This step was crucial to ensure the accuracy of the color analysis, as the cropped section was then analyzed to determine the average CIELAB color, which served as a close approximation to the 'ground truth' color (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_DataAnnotation.ipynb)) 
 
 However, not all images could provide this ground truth value. Some images displayed only the container without showing the actual makeup color (e.g., lipstick). As a result, 88.8% of the images in the dataset had a corresponding ground truth value. The fact that not all images have a ground truth color is not a problem, though, because the absense of label is due to factors unrelated to the color itself, such as incomplete data (e.g., images showing packaging without the makeup color). Therefore, missing labels do not introduce any bias related to the color properties being studied.
 
@@ -63,7 +63,7 @@ Finally, for the images with ground truth values, I extracted and stored the ave
 
 ## Method 1: Color Segmentation
 
-I developed a method to identify and analyze CIELAB color shades in makeup images using image clustering techniques, with a focus on achieving accurate color matching (see [notebook 2](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_A_for_color_identification.ipynb). The goal was to create a robust framework for identifying and categorizing shades that align with human visual perception, crucial for makeup products where precise color matching is key.
+I developed a method to identify and analyze CIELAB color shades in makeup images using image clustering techniques, with a focus on achieving accurate color matching (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Model_A_Clustering.ipynb). The goal was to create a robust framework for identifying and categorizing shades that align with human visual perception, crucial for makeup products where precise color matching is key.
 
 Key Steps:
 
@@ -85,11 +85,9 @@ For illustration, the set of six figures displays makeup images (blush, lipstick
 
 Overall, the refined model demonstrated strong generalization for most makeup products, with notable improvements in color matching accuracy. However, further refinement is suggested for lipliner to reduce variability and enhance precision.
 
-Here's a brief, high-level report of your work:
-
 ## Method 2: Improving Makeup Color Identification with Multimodal AI
 
-In this [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_Model_B_for_color_identification_LLM_.ipynb), I explored the use of `Claude`, a multimodal large language model, to identify and analyze CIELAB color values of makeup products from images. The goal was to create a more accurate and nuanced color identification system than typically found in e-commerce platforms.
+In this [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Model_B_LLM.ipynb), I explored the use of `Claude`, a multimodal large language model, to identify and analyze CIELAB color values of makeup products from images. The goal was to create a more accurate and nuanced color identification system than typically found in e-commerce platforms.
 
 Key Steps and Findings:
 
@@ -120,7 +118,7 @@ The refined approach using Claude and carefully engineered prompts significantly
 
 ## Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification
 
-Next, I [compared the two methods](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/4_Comparison_of_Approaches_A_and_B_.ipynb) for identifying CIELAB shades in makeup products. The comparison was based on Delta E values, which measure color difference. If for a specific makeup product the Delta E of method A is higher than for Method B (Method A > Method B), then Method B performs better because the color predicted is closer to the ground truth color. On the other hand, of for a specific makeup product the Delta E of method B is higher than for Method A, then Method A is performing better because of the small Delta E.
+Next, I [compared the two methods](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/5_Comparison.ipynb) for identifying CIELAB shades in makeup products. The comparison was based on Delta E values, which measure color difference. If for a specific makeup product the Delta E of method A is higher than for Method B (Method A > Method B), then Method B performs better because the color predicted is closer to the ground truth color. On the other hand, of for a specific makeup product the Delta E of method B is higher than for Method A, then Method A is performing better because of the small Delta E.
 
 Overall, the LLM method (Claude) generally outperformed the clustering method across all makeup categories. More specifically, for blush and lipgloss, the LLM approach showed slightly better performance, with about 58-60% of cases having better color accuracy. For lipliner, both methods performed similarly, with the LLM approach having a slight edge (44.83% vs 41.38%). Finally, for lipstick, the LLM significantly outperformed clustering, providing better color accuracy in 62.83% of cases compared to 28.27% for clustering. 
 
@@ -140,7 +138,7 @@ In a nutshell, the multimodal LLM approach (Claude) demonstrated overall better 
 
 ## Building User-Friendly Streamlit App
 
-In the final [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/6_Makeup_App_in_Streamlit.ipynb), I developed a makeup color search application using Streamlit. This app allows users to filter and find makeup products, offering a more nuanced and extensive color selection process compared to major retailers like Sephora and Ulta.
+In the final [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/6_StreamlitApp.ipynb), I developed a makeup color search application using Streamlit. This app allows users to filter and find makeup products, offering a more nuanced and extensive color selection process compared to major retailers like Sephora and Ulta.
 
 In the world of makeup, finding the perfect shade can be a challenge. While many online retailers offer basic color filtering, this app takes it a step further by providing a more granular and visually intuitive color selection process.
 
