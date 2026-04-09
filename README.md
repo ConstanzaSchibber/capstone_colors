@@ -6,11 +6,11 @@
 - **Data:** Table of makeup products along with an image of each product collected from makeup retailers by scraping their website or using their API. 
 - **Methods:** (1) color segmentation, (2) Multimodal Large Language Model (Claude)
 - **App:** web-user interface in which users can filter makeup by color
-- **Tech stack:** Python, Google Colab, Streamlit
+- **Tech stack:** Python, Jupyter, Streamlit (initial version developed on Google Colab)
 
 *Table of Contents*
-- [Problem & Solution](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#problem)
-- [Data Collection, Data Cleaning, and Exploratory Data Analysis](https://github.com/ConstanzaSchibber/capstone_colors/tree/main?tab=readme-ov-file#data-collection-and-cleaning-and-exploratory-data-analysis)
+- [Problem & Solution](#problem--solution)
+- [Data Collection, Data Cleaning, and Exploratory Data Analysis](#data-collection-data-cleaning-and-exploratory-data-analysis)
 - [Human Annotation: Creating Data Labels](#human-annotation-creating-data-labels)
 - [Method 1: Color Segmentation](#method-1-color-segmentation)
 - [Method 2: Improving Makeup Color Identification with Multimodal AI](#method-2-improving-makeup-color-identification-with-multimodal-ai)
@@ -63,7 +63,7 @@ Finally, for the images with ground truth values, I extracted and stored the ave
 
 ## Method 1: Color Segmentation
 
-I developed a method to identify and analyze CIELAB color shades in makeup images using image clustering techniques, with a focus on achieving accurate color matching (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Model_A_Clustering.ipynb). The goal was to create a robust framework for identifying and categorizing shades that align with human visual perception, crucial for makeup products where precise color matching is key.
+I developed a method to identify and analyze CIELAB color shades in makeup images using image clustering techniques, with a focus on achieving accurate color matching (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/3_Model_A_Clustering.ipynb)). The goal was to create a robust framework for identifying and categorizing shades that align with human visual perception, crucial for makeup products where precise color matching is key.
 
 Key Steps:
 
