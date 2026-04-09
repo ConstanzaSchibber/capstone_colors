@@ -32,7 +32,7 @@ Moreover, the color shade filters offered by makeup retailers are often limited.
 </div>
 
 
-By leveraging the [CIELAB color space](https://en.wikipedia.org/wiki/CIELAB_color_space), which provides a standardized and perceptually uniform representation of color, I aim to identify makeup colors from images, and organize them and categorize them by shade. It's designed to be perceptually uniform, meaning that the numerical differences between colors correspond to perceived differences to the human eye.
+By leveraging the [CIELAB color space](https://en.wikipedia.org/wiki/CIELAB_color_space), which provides a standardized and perceptually uniform representation of color, I aim to identify makeup colors from images, and organize them by shade. It's designed to be perceptually uniform, meaning that the numerical differences between colors correspond to perceived differences to the human eye.
 
 CIELAB is a color space defined by the International Commission on Illumination (CIE) where colors are represented in three dimensions: 
 
@@ -46,17 +46,17 @@ In sum, this approach would enable the creation of a more reliable and user-frie
 
 ## Data Collection, Data Cleaning, and Exploratory Data Analysis
 
-The inital data consists of tables with information on makeup products and links to the makeup images. Some key metadata consists of product category (e.g. blush, lipstick, etc.), brand, shade - fancy names from the brand like `sunset`, `peachy`, `raunchy`-, specific product name, among others. 
+The initial data consists of tables with information on makeup products and links to the makeup images. Some key metadata consists of product category (e.g. blush, lipstick, etc.), brand, shade - fancy names from the brand like `sunset`, `peachy`, `raunchy`-, specific product name, among others. 
 
 The [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/1_DataEngineering.ipynb) for this section develops a number of functions to collect the images: (1) validation of URLs, (2) downloading the images, (3) checking that every file downloaded is an image and if any image is corrupted.
 
-When it comes to the images, 40% correspond to lipsticks and 35% to blush. Moreover, the are over 159 unique brands and 59.12% of the brands have at least two products in the data.
+When it comes to the images, 40% correspond to lipsticks and 35% to blush. Moreover, there are over 159 unique brands and 59.12% of the brands have at least two products in the data.
 
 ## Human Annotation: Creating Data Labels
 
 In this project, the absence of labeled data necessitated a manual approach to data annotation. Specifically, I manually cropped each image to focus solely on the makeup area, such as isolating the lipstick in an image. This step was crucial to ensure the accuracy of the color analysis, as the cropped section was then analyzed to determine the average CIELAB color, which served as a close approximation to the 'ground truth' color (see [notebook](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/2_DataAnnotation.ipynb)) 
 
-However, not all images could provide this ground truth value. Some images displayed only the container without showing the actual makeup color (e.g., lipstick). As a result, 88.8% of the images in the dataset had a corresponding ground truth value. The fact that not all images have a ground truth color is not a problem, though, because the absense of label is due to factors unrelated to the color itself, such as incomplete data (e.g., images showing packaging without the makeup color). Therefore, missing labels do not introduce any bias related to the color properties being studied.
+However, not all images could provide this ground truth value. Some images displayed only the container without showing the actual makeup color (e.g., lipstick). As a result, 88.8% of the images in the dataset had a corresponding ground truth value. The fact that not all images have a ground truth color is not a problem, though, because the absence of label is due to factors unrelated to the color itself, such as incomplete data (e.g., images showing packaging without the makeup color). Therefore, missing labels do not introduce any bias related to the color properties being studied.
 
 Finally, for the images with ground truth values, I extracted and stored the average CIELAB color in the metadata, which allowed for precise comparison and evaluation of the color predictions in the subsequent steps.
 
@@ -118,7 +118,7 @@ The refined approach using Claude and carefully engineered prompts significantly
 
 ## Comparative Analysis of Clustering and Multimodal LLM Approaches for Makeup Color Identification
 
-Next, I [compared the two methods](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/5_Comparison.ipynb) for identifying CIELAB shades in makeup products. The comparison was based on Delta E values, which measure color difference. If for a specific makeup product the Delta E of method A is higher than for Method B (Method A > Method B), then Method B performs better because the color predicted is closer to the ground truth color. On the other hand, of for a specific makeup product the Delta E of method B is higher than for Method A, then Method A is performing better because of the small Delta E.
+Next, I [compared the two methods](https://github.com/ConstanzaSchibber/capstone_colors/blob/main/notebooks/5_Comparison.ipynb) for identifying CIELAB shades in makeup products. The comparison was based on Delta E values, which measure color difference. If for a specific makeup product the Delta E of method A is higher than for Method B (Method A > Method B), then Method B performs better because the color predicted is closer to the ground truth color. On the other hand, if for a specific makeup product the Delta E of method B is higher than for Method A, then Method A is performing better because of the small Delta E.
 
 Overall, the LLM method (Claude) generally outperformed the clustering method across all makeup categories. More specifically, for blush and lipgloss, the LLM approach showed slightly better performance, with about 58-60% of cases having better color accuracy. For lipliner, both methods performed similarly, with the LLM approach having a slight edge (44.83% vs 41.38%). Finally, for lipstick, the LLM significantly outperformed clustering, providing better color accuracy in 62.83% of cases compared to 28.27% for clustering. 
 
