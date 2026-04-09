@@ -16,6 +16,7 @@ plotly
 
 # API & web
 anthropic
+python-dotenv
 requests
 validators
 
